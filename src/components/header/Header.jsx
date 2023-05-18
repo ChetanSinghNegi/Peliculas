@@ -10,7 +10,7 @@ import logo from "../../assets/movix-logo.svg";
 const Header = () => {
   const [show, setShow] = useState("top");
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [mobileMenu, setMobileMenu] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false); //MDisp drop down when hamburger clicked
   const [query, setQuery] = useState(""); //saving query of header search
   const [showSearch, setShowSearch] = useState(""); //in header if clicked search
   const navigate = useNavigate();
@@ -37,22 +37,55 @@ const Header = () => {
     }
   };
 
+  const navigationHandler = (type) => {
+    //after clicking movies or tv series
+    setMobileMenu(false);
+    navigate(`/explore/${type}`);
+  };
+
+  //hiding topbar after scrolling towards y axis
+  useEffect(() => {
+    window.addEventListener("scroll", controlNavbar);
+  }, [lastScrollY]);
+
+  const controlNavbar = () => {
+    console.log("y scolling value =>", window.scrollY);
+    if (window.scrollY > 200) {
+      if (window.scrollY > lastScrollY && !mobileMenu) {
+        setShow("hide");
+      } else {
+        setShow("show");
+      }
+    } else {
+      setShow("top");
+    }
+    setLastScrollY(window.scrollY);
+  };
+
   return (
     <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
       <ContentWrapper>
         <div className="logo">
           <img src={logo} alt="" />
         </div>
+
+        {/* this will run only for Desktop check css if needed */}
         <ul className="menuItems">
-          <li className="menuItem">Movies</li>
-          <li className="menuItem">TV Shows</li>
+          <li className="menuItem" onClick={navigationHandler}>
+            Movies
+          </li>
+          <li className="menuItem" onClick={navigationHandler}>
+            TV Shows
+          </li>
           <li className="menuItem">
-            <HiOutlineSearch />
+            <HiOutlineSearch onClick={openSearch} />
           </li>
         </ul>
 
         <div className="mobileMenuItems">
           <HiOutlineSearch onClick={openSearch} />
+
+          {/* this will run only for Mobile*/}
           {mobileMenu ? (
             <VscChromeClose onClick={() => setMobileMenu(false)} />
           ) : (

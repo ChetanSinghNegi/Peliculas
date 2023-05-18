@@ -25,7 +25,7 @@ function HeroBanner() {
   }, [data]);
 
   const searchQueryHandler = (event) => {
-    //if someone presses enter in input text
+    //if someone presses enter in herobanner search input text
     if (event.key == "Enter" && query.length > 0) {
       console.log("Searching for", query);
       navigate(`/search/${query}`);
