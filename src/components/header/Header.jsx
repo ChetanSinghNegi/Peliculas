@@ -10,7 +10,7 @@ import logo from "../../assets/movix-logo.svg";
 const Header = () => {
   const [show, setShow] = useState("top");
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [mobileMenu, setMobileMenu] = useState(false); //MDisp drop down when hamburger clicked
+  const [mobileMenu, setMobileMenu] = useState(false); //MDisplay drop down when hamburger clicked
   const [query, setQuery] = useState(""); //saving query of header search
   const [showSearch, setShowSearch] = useState(""); //in header if clicked search
   const navigate = useNavigate();
@@ -42,14 +42,18 @@ const Header = () => {
     setMobileMenu(false);
     navigate(`/explore/${type}`);
   };
+  useEffect(() => {
+    /* when goes to next page so changing cursor position to default*/
+    window.scrollTo(0, 0);
+  }, [location]);
 
   //hiding topbar after scrolling towards y axis
   useEffect(() => {
     window.addEventListener("scroll", controlNavbar);
   }, [lastScrollY]);
 
+  //logic for hiding navbar when y scolling
   const controlNavbar = () => {
-    console.log("y scolling value =>", window.scrollY);
     if (window.scrollY > 200) {
       if (window.scrollY > lastScrollY && !mobileMenu) {
         setShow("hide");
