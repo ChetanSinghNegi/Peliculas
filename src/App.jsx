@@ -44,11 +44,8 @@ function App() {
     endPoints.map((endPoint) =>
       promises.push(fetchDataFromApi(`/genre/${endPoint}/list`))
     );
-    // console.log("promises value", promises);
     const data = await Promise.all(promises); //we will get to wait till all promises will get success
-    console.log("genres data =>", data);
     data.map(({ genres }) => genres.map((item) => (allGenres[item.id] = item)));
-    console.log("allGenres is", allGenres);
     dispatch(getGenres(allGenres));
   };
 
