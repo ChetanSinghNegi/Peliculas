@@ -34,13 +34,18 @@ const Header = () => {
       setTimeout(() => {
         setShowSearch(false);
       }, 1000);
+      setQuery("");
     }
   };
 
   const navigationHandler = (type) => {
     //after clicking movies or tv series
+    if (type === "movie") {
+      navigate("/explore/movie");
+    } else {
+      navigate("/explore/tv");
+    }
     setMobileMenu(false);
-    navigate(`/explore/${type}`);
   };
   useEffect(() => {
     /* when goes to next page so changing cursor position to default*/
@@ -69,16 +74,21 @@ const Header = () => {
   return (
     <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
       <ContentWrapper>
-        <div className="logo">
+        <div
+          className="logo"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
           <img src={logo} alt="" />
         </div>
 
         {/* this will run only for Desktop check css if needed */}
         <ul className="menuItems">
-          <li className="menuItem" onClick={navigationHandler}>
+          <li className="menuItem" onClick={() => navigationHandler("movie")}>
             Movies
           </li>
-          <li className="menuItem" onClick={navigationHandler}>
+          <li className="menuItem" onClick={() => navigationHandler("tv")}>
             TV Shows
           </li>
           <li className="menuItem">

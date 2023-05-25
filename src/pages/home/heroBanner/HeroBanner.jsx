@@ -26,11 +26,16 @@ function HeroBanner() {
 
   const searchQueryHandler = (event) => {
     //if someone presses enter in herobanner search input text
-    if (event.key == "Enter" && query.length > 0) {
+    if (
+      ((event.type === "keyup" && event.key == "Enter") ||
+        event.type === "click") &&
+      query.length > 0
+    ) {
       console.log("Searching for", query);
       navigate(`/search/${query}`);
     }
   };
+
   return (
     <div className="heroBanner">
       {!loading && <Img src={background} className="backdrop-img"></Img>}
@@ -49,7 +54,7 @@ function HeroBanner() {
               onChange={(event) => setQuery(event.target.value)}
               onKeyUp={searchQueryHandler}
             />
-            <button>Search</button>
+            <button onClick={searchQueryHandler}>Search</button>
           </div>
         </div>
       </ContentWrapper>
