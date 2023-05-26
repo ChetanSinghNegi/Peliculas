@@ -5,8 +5,9 @@ import { VscChromeClose } from "react-icons/vsc"; // close icon
 import { useNavigate, useLocation } from "react-router-dom";
 
 import "./style.scss";
+import pig from "../../assets/pig.png";
+import peliculas from "../../assets/untitled.png";
 import ContentWrapper from "../contentWrapper/ContentWrapper";
-import logo from "../../assets/movix-logo.svg";
 const Header = () => {
   const [show, setShow] = useState("top");
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -59,7 +60,7 @@ const Header = () => {
 
   //logic for hiding navbar when y scolling
   const controlNavbar = () => {
-    if (window.scrollY > 200) {
+    if (window.scrollY > 250) {
       if (window.scrollY > lastScrollY && !mobileMenu) {
         setShow("hide");
       } else {
@@ -80,7 +81,8 @@ const Header = () => {
             navigate("/");
           }}
         >
-          <img src={logo} alt="" />
+          <img src={pig} alt="" />
+          <img src={peliculas} alt="" />
         </div>
 
         {/* this will run only for Desktop check css if needed */}
