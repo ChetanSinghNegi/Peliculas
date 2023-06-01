@@ -4,8 +4,7 @@ import { useSelector } from "react-redux";
 import "./style.scss";
 
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
-import Img from "../../../components/lazyLoadImage/Img";
-import avatar from "../../../assets/avatar.png";
+import CastItem from "./CastItem";
 
 const Cast = ({ data, loading }) => {
   const { url } = useSelector((state) => state.home);
@@ -25,20 +24,9 @@ const Cast = ({ data, loading }) => {
         <div className="sectionHeading">Top Cast</div>
         {!loading ? (
           <div className="listItems">
-            {data?.map((item) => {
-              let imgUrl = item.profile_path
-                ? url.profile + item.profile_path
-                : avatar;
-              return (
-                <div key={item.id} className="listItem">
-                  <div className="profileImg">
-                    <Img src={imgUrl} />
-                  </div>
-                  <div className="name">{item.name}</div>
-                  <div className="character">{item.character}</div>
-                </div>
-              );
-            })}
+            {data?.map((item) => (
+              <CastItem item={item} />
+            ))}
           </div>
         ) : (
           <div className="castSkeleton">

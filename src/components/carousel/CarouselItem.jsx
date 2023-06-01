@@ -19,7 +19,7 @@ const CarouselItem = ({ item, endpoint }) => {
 
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
-  console.log("item => ", item);
+  // console.log("item => ", item);
   const posterUrl = item?.poster_path
     ? url.poster + item?.poster_path
     : PosterFallback;

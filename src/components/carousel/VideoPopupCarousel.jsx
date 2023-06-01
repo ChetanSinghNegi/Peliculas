@@ -14,6 +14,9 @@ const VideoPopupCarousel = ({ show, setShow, videoId, setVideoId }) => {
           // height="100%"
 
           // muted
+          onReady={() => {
+            playing = true;
+          }}
           onError={() =>
             setVideoId(
               "https://www.youtube.com/watch?v=fRh_vgS2dFE&ab_channel=JustinBieberVEVO"

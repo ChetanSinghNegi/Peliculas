@@ -10,6 +10,7 @@ import Home from "./pages/home/Home";
 import SearchResult from "./pages/searchResult/SearchResult";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
+import CastDetails from "./pages/castDetails/CastDetails";
 
 function App() {
   // for calling any function we have to use useDispatch
@@ -57,6 +58,7 @@ function App() {
         <Route path="/:mediaType/:id" element={<Details />}></Route>
         <Route path="/search/:query" element={<SearchResult />}></Route>
         <Route path="/explore/:mediaType" element={<Explore />}></Route>
+        <Route path="/person/:person_id" element={<CastDetails />}></Route>
         <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
       <Footer />

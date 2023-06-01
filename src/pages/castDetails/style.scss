@@ -1,0 +1,85 @@
+.details-cover {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--black);
+  position: relative;
+  .background-img {
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      // object-position: center;
+      width: 100%;
+      height: 100%;
+      opacity: 0.5;
+    }
+  }
+  .opacity-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    // opacity: 0.3;
+    background: linear-gradient(
+      180deg,
+      rgba(4, 21, 45, 0) 0%,
+      var(--black3) 79.17%
+    );
+  }
+  .details {
+    position: absolute;
+    width: 80vw;
+    // background-color: yellow;
+    display: flex;
+    // justify-content: space-between;
+    gap: 40px;
+    align-items: center;
+
+    // top: 100px;
+    margin: 10vh 10vw;
+    // margin-right: 100px;
+    .profile-pic {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background-color: transparent;
+      // width: 300px;
+      // height: 500px;
+      img {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        background-color: transparent;
+        border-radius: 150px 150px 150px 150px;
+        // border-color: yellow;
+        // border: 2px solid yellow;
+        // border-color: rgba(0, 0, 0, 1);
+      }
+      .name {
+        color: white;
+        font-size: 40px;
+        width: 100%;
+        padding-left: 10px;
+        font-family: cursive;
+        font-weight: 500;
+      }
+    }
+    .work {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      .famous-for {
+        color: white;
+        font-size: 50px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .biography {
+        color: white;
+        font-size: 20px;
+      }
+    }
+  }
+}
