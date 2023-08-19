@@ -22,7 +22,7 @@ function HeroBanner() {
       url.backdrop +
       data?.results?.[Math.floor(Math.random() * 20)].backdrop_path;
     setBackground(bg);
-  }, [data]);
+  }, [data, url]);
 
   const searchQueryHandler = (event) => {
     //if someone presses enter in herobanner search input text
